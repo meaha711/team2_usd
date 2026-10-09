@@ -1,0 +1,6 @@
+# Agent memory is regenerated on each machine
+agent_memory.json
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.env
