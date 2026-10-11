@@ -110,4 +110,11 @@ events are judged on market data and earnings.
 
 The Python code follows PEP 8 (checked with `pycodestyle`, max line length 79).
 
+## Use of AI assistance
+
+Claude (Anthropic) appears as a co-author on some commits. It was used only
+to help connect the local LLM (Ollama / LM Studio) to the notebook code. The
+agent design, anomaly detection logic, workflows, evaluation, and analysis
+are the team's own work.
+
 *For educational purposes only. Not investment advice.*
