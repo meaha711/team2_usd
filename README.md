@@ -21,18 +21,18 @@ Each anomaly gets one of three verdicts:
 | Requirement | Implementation |
 |---|---|
 | **Planning** | The LLM planner picks and orders tools using their descriptions and lessons from past runs |
-| **Dynamic tool use** | 6 Yahoo Finance tools; the agent re-plans (skips or adds steps) and fetches insider filings only for suspicious cases |
+| **Dynamic tool use** | 7 Yahoo Finance tools; the agent re-plans (skips or adds steps) and fetches insider filings only for suspicious cases |
 | **Self-reflection** | Evaluator-optimizer critique plus a run-level reflection (quality, gaps, confidence) |
 | **Learning across runs** | JSON memory: grades past flags against what happened next, adapts detector thresholds, stores lessons |
 | **Prompt chaining** | News: ingest → preprocess → classify → extract → summarize |
-| **Routing** | Each anomaly goes to a market, earnings, news, or manipulation specialist agent |
+| **Routing (multi-agent)** | An orchestrator delegates each anomaly to separate specialist agents (Market, Technical with moving averages and RSI, Fundamental with ratios and income statements, News and sentiment), then a lead specialist weighs their findings |
 | **Evaluator-optimizer** | Draft report → LLM rubric and rule checks → refine (up to 3 rounds, plus a guardrail) |
 
 ## Quick start
 
 ```bash
-git clone https://github.com/<your-org>/stock-anomaly-agent.git
-cd stock-anomaly-agent
+git clone https://github.com/meaha711/team2_usd.git
+cd team2_usd
 pip install -r requirements.txt
 ```
 
@@ -57,7 +57,7 @@ Environment-variable overrides: `LLM_PROVIDER`, `LLM_BASE_URL`, `LLM_MODEL`,
 ### Run
 
 ```bash
-jupyter notebook MarketSentinel_Stock_Anomaly_Agent.ipynb
+jupyter notebook "AAI-520 Group 2.ipynb"
 ```
 
 Run all cells. A full run with a local 8B model takes about 10–30 minutes,
@@ -66,7 +66,7 @@ depending on your hardware.
 ### Export for submission
 
 ```bash
-jupyter nbconvert --to html MarketSentinel_Stock_Anomaly_Agent.ipynb
+jupyter nbconvert --to html "AAI-520 Group 2.ipynb"
 ```
 Or use **File → Print → Save as PDF** from the HTML (PDF is preferred for
 Canvas).
@@ -82,7 +82,7 @@ Canvas).
 | 5 | Anomaly detection logic and feature design | Sanjay Kumar | Meaha J |
 | 6 | Agent memory (learning across runs) | Sanjay Kumar | Meaha J |
 | 7 | Workflow 1: Prompt chaining | Sanjay Kumar | Meaha J |
-| 8 | Workflow 2: Routing to specialists | Sanjay Kumar | Meaha J |
+| 8 | Workflow 2: Routing to a multi-agent specialist team | Sanjay Kumar | Meaha J |
 | 9 | Workflow 3: Evaluator-optimizer | Sanjay Kumar | Meaha J |
 | 10 | Autonomous investigator agent | Sanjay Kumar | Meaha J |
 | 11 | Demonstration runs | Meaha J | Sanjay Kumar |
